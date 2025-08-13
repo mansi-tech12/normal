@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PayOn - Gas Bill Payment</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+body{background:url('/image/main.jpg') no-repeat center center fixed;background-size:cover;color:#fff;min-height:100vh;padding-bottom:220px;position:relative;}
+body::before{content:"";position:fixed;top:0;left:0;height:100%;width:100%;background:rgba(125,123,123,0.9);z-index:-1;}
+header{background-color:#0077b6;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;color:white;position:sticky;top:0;z-index:1000;}
+header img{height:40px;}
+header a{text-decoration:none;color:white;font-size:24px;}
+.section-title{font-size:20px;color:#fff;font-weight:bold;padding:0 20px;margin-top:25px;margin-bottom:10px;}
+.form-container{background:white;margin:20px;padding:20px;border-radius:15px;box-shadow:0 6px 20px rgba(0,0,0,0.15);color:#333;}
+.form-group{margin-bottom:18px;}
+label{display:block;margin-bottom:6px;font-weight:bold;color:#4e54c8;}
+input,select{width:100%;padding:10px 12px;border:1px solid #ccc;border-radius:10px;outline:none;}
+button{width:100%;background:#4e54c8;color:white;border:none;padding:12px;border-radius:10px;font-size:16px;cursor:pointer;transition:0.3s;}
+button:hover{background:#3b41b5;}
+nav{position:fixed;bottom:0;left:0;width:100%;background:#121212;display:flex;justify-content:space-around;align-items:center;height:65px;border-top:1px solid #333;z-index:100;}
+nav div{text-align:center;font-size:13px;color:#bbbbbb;transition:0.3s;}
+nav div:hover{color:#ffffff;transform:scale(1.1);}
+footer{background-color:#000;color:#ccc;padding:50px 20px;}
+footer h4{font-size:16px;color:#fff;margin-bottom:15px;border-bottom:1px solid #444;padding-bottom:5px;}
+footer ul{list-style:none;padding-left:0;}
+footer ul li{margin-bottom:10px;}
+footer ul li a{color:#aaa;text-decoration:none;font-size:14px;}
+footer ul li a:hover{color:#fff;text-decoration:underline;}
+.footer-grid{display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;max-width:1200px;margin:auto;}
+.footer-column{flex:1 1 200px;min-width:180px;}
+.footer-bottom{text-align:center;margin-top:30px;font-size:13px;color:#888;}</style>
+</head>
+<body>
+<header>
+  <a href="Recharge.html">🔙</a>
+  <img src="/image/image 2/logo.png" alt="Payon Logo">
+  <a href="profile.html">👤</a>
+</header>
+<div class="section-title">PayOn - Gas Bill Payment</div>
+<div class="form-container">
+  <form>
+    <div class="form-group"><label for="gas-number">Customer Number</label><input type="text" id="gas-number" placeholder="Enter your customer number" required></div>
+    <div class="form-group"><label for="gas-provider">Select Gas Provider</label><select id="gas-provider" required><option value="">-- Choose --</option><option value="indane">Indane</option><option value="bharat gas">Bharat Gas</option><option value="hp gas">HP Gas</option></select></div>
+    <div class="form-group"><label for="amount">Amount</label><input type="number" id="amount" placeholder="₹ Amount" required></div>
+    <button type="submit">Proceed to Pay</button>
+  </form>
+</div>
+<nav>
+  <div onclick="window.location.href='index.html'">🏠<br>Home</div>
+  <div onclick="window.location.href='passbook.html'">📒<br>Passbook</div>
+  <div onclick="alert('QR Scanner here')">📷<br>Pay</div>
+  <div onclick="window.location.href='dashboard.html'">🎁<br>Dashboard</div>
+  <div onclick="window.location.href='profile.html'">👤<br>Profile</div>
+</nav>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-column"><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Support</a></li><li><a href="#">Terms</a></li></ul></div>
+    <div class="footer-column"><h4>Recharge</h4><ul><li><a href="#">Mobile</a></li><li><a href="#">DTH</a></li><li><a href="#">Electricity</a></li></ul></div>
+    <div class="footer-column"><h4>Payments</h4><ul><li><a href="#">Credit Cards</a></li><li><a href="#">Wallet</a></li><li><a href="#">Bank Transfer</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">&copy; 2025 PayOn. All rights reserved.</div>
+</footer>
+</body>
+</html>

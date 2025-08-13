@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PayOn - Dashboard & Pages</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+/* BASE */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+body{
+  background:url('/image/main.jpg') no-repeat center center fixed;
+  background-size:cover;
+  min-height:100vh;
+  color:#c9b1b1;
+  padding-bottom:120px;
+}
+body::before{
+  content:"";
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(125,123,123,0.9);
+  z-index:-1;
+}
+.hidden{display:none;}
+/* NAVBAR */
+.navbar{
+  background:#0077b6;color:#fff;padding:10px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:999;
+}
+.navbar-logo{text-align:center;flex-grow:1;}
+.navbar-logo img{height:40px;}
+.navbar-icon{width:32px;height:32px;cursor:pointer;transition:transform .3s;}
+.navbar-icon:hover{transform:scale(1.15);}
+/* smaller icon for About-close on about page */
+.close-icon{width:18px;height:18px;}
+/* BANNER */
+.top-banner{background:#fefefe;color:#0077b6;text-align:center;font-weight:bold;padding:10px;box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+/* CAROUSEL */
+.carousel{height:220px;overflow:hidden;}
+.slides{display:flex;width:300%;animation:slide 30s infinite;}
+.slides img{width:100%;height:220px;object-fit:cover;}
+@keyframes slide{
+  0%,33.33%{transform:translateX(0);}
+  36%,66.66%{transform:translateX(-100%);}
+  69%,100%{transform:translateX(-200%);}
+}
+/* WALLET */
+.wallet-card{background:#fff;margin:20px;padding:20px;border-radius:15px;box-shadow:0 6px 20px rgba(0,0,0,0.15);}
+.wallet-card h2{color:#4e54c8;margin-bottom:10px;}
+.wallet-card p{color:#111;font-size:26px;font-weight:bold;}
+.section-title{padding:0 20px;font-weight:bold;color:#2c3e50;margin:20px 0 10px;}
+/* GRID */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;padding:0 20px;}
+.grid-item{background:#fff;border-radius:15px;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,0.15);cursor:pointer;transition:.3s;}
+.grid-item:hover{transform:translateY(-4px) scale(1.02);}
+.grid-item img{width:60px;height:60px;margin-top:15px;object-fit:contain;}
+.grid-item span{display:block;padding:10px 0 15px;color:#333;}
+.grid-item a{display:block;color:inherit;text-decoration:none;} /* if we wrap with anchors later */
+/* OFFERS */
+.offer-banner{width:100%;height:140px;object-fit:cover;margin-top:20px;}
+.offer-scroll{display:flex;overflow-x:auto;gap:15px;padding:0 20px;margin:20px 0;}
+.offer-card{flex:0 0 auto;width:220px;background:#fff;border-radius:12px;box-shadow:0 4px 8px rgba(0,0,0,0.1);transition:.3s;}
+.offer-card:hover{transform:scale(1.03);}
+.offer-card img{width:100%;height:120px;object-fit:cover;}
+.offer-card .content{padding:10px;font-size:13px;}
+/* PAGE SECTIONS */
+.page-section{background:#fff;margin:20px;padding:20px;border-radius:15px;box-shadow:0 6px 20px rgba(0,0,0,0.15);}
+.page-section h2{color:#0077b6;margin-bottom:10px;}
+.page-section p{color:#333;line-height:1.6;}
+.back-btn{display:inline-block;margin-top:20px;background:#0077b6;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;}
+.back-btn:hover{background:#005f8d;}
+/* QR SCAN SIMULATION */
+.qr-box{width:200px;height:200px;border:5px solid #0077b6;margin:20px auto;background:url('https://cdn-icons-png.flaticon.com/512/2920/2920323.png') no-repeat center/contain;}
+/* NAV */
+nav{position:fixed;bottom:0;left:0;width:100%;background:#000;display:flex;justify-content:space-around;align-items:center;height:60px;border-top:1px solid #444;z-index:100;}
+nav div{text-align:center;color:#fff;font-size:12px;}
+nav div:hover{color:#ffcd00;cursor:pointer;}
+/* FOOTER */
+footer{background:#000;color:#ccc;padding:30px 20px;margin-top:30px;}
+footer h4{color:#fff;border-bottom:1px solid #444;margin-bottom:10px;}
+footer a{color:#aaa;text-decoration:none;}
+footer a:hover{color:#fff;text-decoration:underline;}
+.footer-grid{display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;}
+.footer-column{flex:1 1 200px;min-width:180px;}
+.footer-bottom{text-align:center;margin-top:20px;font-size:13px;}
+@media(min-width:768px){.grid{grid-template-columns:repeat(6,1fr);}}
+</style>
+</head>
+<body>
+
+<!-- DASHBOARD -->
+<div id="dashboard-page">
+  <div class="navbar">
+    <!-- About icon keeps opening the in-file about section -->
+    <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" class="navbar-icon" onclick="showPage('about-page')" title="About" alt="About" />
+    <div class="navbar-logo"><img src="/image/image 2/logo.png" alt="PayOn Logo"></div>
+
+    <!-- Profile icon: use a normal link so it always opens profile.html in same window -->
+    <a href="profile.html" title="Profile" aria-label="Profile">
+      <img src="https://cdn-icons-png.flaticon.com/512/456/456212.png" class="navbar-icon" alt="Profile" />
+    </a>
+  </div>
+
+  <div class="top-banner">💡 Recharge now and earn cashback! | 🎉 Invite friends to earn ₹100 instantly! | ⚡ Pay bills & save money!</div>
+
+  <div class="carousel">
+    <div class="slides">
+      <img src="/image/bg2.jpg" alt="banner1">
+      <img src="/image/banner2.jpg" alt="banner2">
+      <img src="/image/banner4.jpg" alt="banner3">
+    </div>
+  </div>
+
+  <div class="wallet-card"><h2>Wallet Balance</h2><p>₹ 1,250.00</p></div>
+
+  <div class="section-title">Services</div>
+  <div class="grid">
+    <!-- each grid-item now navigates to the page you said you already created -->
+    <div class="grid-item" onclick="window.location.href='recharge.html'">
+      <img src="https://cdn-icons-png.flaticon.com/512/1041/1041880.png" alt="Recharge">
+      <span>Recharge</span>
+    </div>
+
+    <div class="grid-item" onclick="window.location.href='billpay.html'">
+      <img src="https://cdn-icons-png.flaticon.com/512/2910/2910762.png" alt="Bill Pay">
+      <span>Bill Pay</span>
+    </div>
+
+    <div class="grid-item" onclick="window.location.href='wallet.html'">
+      <img src="https://cdn-icons-png.flaticon.com/512/4072/4072261.png" alt="Wallet">
+      <span>Wallet</span>
+    </div>
+  </div>
+
+  <div class="section-title">Other Options</div>
+  <div class="grid">
+    <div class="grid-item" onclick="window.location.href='upi.html'">
+      <img src="https://cdn-icons-png.flaticon.com/512/2331/2331941.png" alt="UPI">
+      <span>UPI</span>
+    </div>
+
+    <div class="grid-item" onclick="window.location.href='qr.html'">
+      <img src="https://cdn-icons-png.flaticon.com/512/2920/2920323.png" alt="QR Pay">
+      <span>QR Pay</span>
+    </div>
+
+    <div class="grid-item" onclick="window.location.href='train.html'">
+      <img src="https://cdn-icons-png.flaticon.com/512/3388/3388617.png" alt="Train Tickets">
+      <span>Train Tickets</span>
+    </div>
+
+    <div class="grid-item" onclick="window.location.href='movies.html'">
+      <img src="https://cdn-icons-png.flaticon.com/512/2909/2909767.png" alt="Movies">
+      <span>Movies</span>
+    </div>
+
+    <div class="grid-item" onclick="window.location.href='giftcards.html'">
+      <img src="https://cdn-icons-png.flaticon.com/512/2331/2331970.png" alt="Gift Cards">
+      <span>Gift Cards</span>
+    </div>
+
+    <div class="grid-item" onclick="window.location.href='insurance.html'">
+      <img src="https://cdn-icons-png.flaticon.com/512/2331/2331936.png" alt="Insurance">
+      <span>Insurance</span>
+    </div>
+  </div>
+
+  <img src="/image/offer.jpg" class="offer-banner" alt="offer">
+  <div class="section-title">Offers for You</div>
+  <div class="offer-scroll">
+    <div class="offer-card"><img src="/image/bg.jpg" alt=""><div class="content">💸 Get 10% Cashback</div></div>
+    <div class="offer-card"><img src="/image/bg2.jpg" alt=""><div class="content">⚡ Save ₹50 on Bill</div></div>
+    <div class="offer-card"><img src="/image/bg3.jpg" alt=""><div class="content">🎁 Earn Vouchers</div></div>
+  </div>
+</div>
+
+<!-- ABOUT PAGE (in-file) -->
+<div id="about-page" class="hidden">
+  <div class="navbar">
+    <!-- small close icon for a cleaner look -->
+    <img src="https://cdn-icons-png.flaticon.com/512/271/271220.png" class="navbar-icon close-icon" onclick="showPage('dashboard-page')" title="Close" alt="Close" />
+    <div class="navbar-logo"><img src="/image/image 2/logo.png" alt="PayOn Logo"></div>
+    <div></div>
+  </div>
+
+  <div class="page-section"><h2>About PayOn</h2><p>PayOn is your all-in-one payment solution... (update this text in your about page file if needed)</p></div>
+  <div class="page-section"><h2>Terms & Conditions</h2><p>By using PayOn, you agree to our terms...</p></div>
+  <a href="#" class="back-btn" onclick="showPage('dashboard-page')">← Back to Dashboard</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div onclick="showPage('dashboard-page')">🏠<br>Home</div>
+  <div onclick="window.location.href='passbook.html'">📒<br>Passbook</div>
+  <div onclick="window.location.href='qr.html'">📷<br>Pay</div>
+  <div onclick="window.location.href='offers.html'">🎁<br>Offers</div>
+  <div onclick="showPage('about-page')">ℹ️<br>About</div>
+</nav>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-column"><h4>Company</h4><ul><li><a href="#" onclick="showPage('about-page')">About</a></li><li><a href="#">Support</a></li><li><a href="#">Terms</a></li></ul></div>
+    <div class="footer-column"><h4>Recharge</h4><ul><li><a href="recharge.html">Mobile</a></li><li><a href="dth.html">DTH</a></li><li><a href="electricity.html">Electricity</a></li></ul></div>
+    <div class="footer-column"><h4>Payments</h4><ul><li><a href="creditcards.html">Credit Cards</a></li><li><a href="wallet.html">Wallet</a></li><li><a href="banktransfer.html">Bank Transfer</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">&copy; 2025 PayOn. All rights reserved.</div>
+</footer>
+
+<script>
+/**
+ * showPage(id)
+ * - toggles between the in-file pages: dashboard-page and about-page.
+ * - other app pages open as separate files using window.location.href
+ */
+function showPage(id){
+  // hide the in-file sections
+  document.querySelectorAll('#dashboard-page,#about-page').forEach(el=>el.classList.add('hidden'));
+  // show requested section if it exists
+  const target = document.getElementById(id);
+  if(target) target.classList.remove('hidden');
+  else {
+    // if the requested id doesn't exist, fall back to dashboard
+    document.getElementById('dashboard-page').classList.remove('hidden');
+  }
+}
+
+// Accessibility: allow Enter key on focused grid items to activate navigation
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Enter' && document.activeElement && document.activeElement.dataset && document.activeElement.dataset.href){
+    window.location.href = document.activeElement.dataset.href;
+  }
+});
+</script>
+</body>
+</html>

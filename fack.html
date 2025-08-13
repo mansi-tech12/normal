@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payon - Recharge & Bill Payment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, #4e54c8, #8f94fb);
+      min-height: 100vh;
+      color: #333;
+      padding-bottom: 80px;
+    }
+
+    header {
+      background: transparent;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      color: white;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    header a {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      text-decoration: none;
+      color: white;
+      font-size: 22px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      color: #fff;
+      font-weight: bold;
+      padding: 0 20px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .service-options {
+      display: flex;
+      overflow-x: auto;
+      gap: 15px;
+      padding: 0 20px;
+    }
+
+    .service-card {
+      min-width: 100px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      cursor: pointer;
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 80px;
+      object-fit: cover;
+    }
+
+    .service-card span {
+      padding: 8px;
+      display: block;
+      font-size: 13px;
+      color: #333;
+    }
+
+    .form-container {
+      background: white;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #4e54c8;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      outline: none;
+      transition: border 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      border-color: #4e54c8;
+    }
+
+    button {
+      width: 100%;
+      background: #4e54c8;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #3b41b5;
+    }
+
+    .info-box {
+      background: #ffffffc7;
+      margin: 0 20px 20px;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      font-size: 14px;
+      color: #333;
+    }
+
+    nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: white;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 60px;
+      border-top: 1px solid #ccc;
+      z-index: 100;
+    }
+
+    nav div {
+      text-align: center;
+      font-size: 12px;
+      color: #4e54c8;
+    }
+
+    nav div:hover {
+      color: #111;
+      cursor: pointer;
+    }
+
+    @media (min-width: 768px) {
+      .service-options {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="dashboard.html">🔙</a>
+    <img src="/image/image 2/logo.png" alt="Payon Logo">
+  </header>
+
+  <div class="section-title">Select a Service</div>
+  <div class="service-options">
+    <div class="service-card">
+      <img src="/image/image 2/mobile.png" alt="Mobile">
+      <span>Mobile</span>
+    </div>
+    <div class="service-card">
+      <img src="/image/image 2/electricity.png" alt="Electricity">
+      <span>Electricity</span>
+    </div>
+    <div class="service-card">
+      <img src="/image/image 2/DTH.png" alt="DTH">
+      <span>DTH</span>
+    </div>
+    <div class="service-card">
+      <img src="/image/image 2/gas.png" alt="Gas">
+      <span>Gas</span>
+    </div>
+  </div>
+
+  <div class="section-title">Enter Details</div>
+  <div class="form-container">
+    <form>
+      <div class="form-group">
+        <label for="number">Mobile / Consumer Number</label>
+        <input type="text" id="number" placeholder="Enter your number" required>
+      </div>
+
+      <div class="form-group">
+        <label for="operator">Select Operator</label>
+        <select id="operator" required>
+          <option value="">-- Choose Operator --</option>
+          <option value="airtel">Airtel</option>
+          <option value="jio">Jio</option>
+          <option value="vi">VI</option>
+          <option value="bsnl">BSNL</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <input type="number" id="amount" placeholder="₹ Amount" required>
+      </div>
+
+      <button type="submit">Proceed to Pay</button>
+    </form>
+  </div>
+
+  <div class="info-box">
+    <strong>💰 Wallet Balance:</strong> ₹1,250<br><br>
+    <strong>🔒 Secure Payments:</strong> All transactions are encrypted and 100% secure.<br><br>
+    <strong>🛠 Need Help?</strong> Call our 24x7 support at <a href="tel:+1800123456">1800-123-456</a> or visit the help section.
+  </div>
+
+  <nav>
+    <div>🏠<br>Home</div>
+    <div>📒<br>Passbook</div>
+    <div>📷<br>Pay</div>
+    <div>🎁<br>Offers</div>
+    <div>👤<br>Profile</div>
+  </nav>
+
+</body>
+</html>

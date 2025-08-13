@@ -1,0 +1,248 @@
+<!-- Save this as sprofile.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title> Profile</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ede2ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+body {
+  background: url('/image/main.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  min-height: 100vh;
+  padding-bottom: 220px;
+  position: relative;
+}
+
+    .profile-container {
+      width: 95%;
+      max-width: 430px;
+      background: white;
+      padding: 1rem 1.2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .logo-container {
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .logo-container img {
+      height: 40px;
+    }
+
+    .profile-header {
+      text-align: center;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .profile-pic-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .profile-header img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid #5963f5;
+      object-fit: cover;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .upload-icon {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background-color: #2d21d2;
+      color: white;
+      border-radius: 50%;
+      padding: 5px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    #profile-pic-upload {
+      display: none;
+    }
+
+    h2 {
+      color: #3b3bef;
+      margin-top: 0.6rem;
+      font-size: 1.2rem;
+    }
+
+    .profile-form label {
+      display: block;
+      margin-bottom: 0.2rem;
+      font-weight: bold;
+      color: #3e2ba7;
+      font-size: 0.88rem;
+    }
+
+    .profile-form input,
+    .profile-form textarea {
+      width: 100%;
+      padding: 0.45rem;
+      margin-bottom: 0.7rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 0.85rem;
+    }
+
+    .btn-group {
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    .btn-group button {
+      background-color: #4b3bf5;
+      color: white;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.85rem;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 0 5px;
+    }
+
+    .back-btn {
+      margin-top: 1.2rem;
+      background-color: #6982ee;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      width: 100%;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .back-btn:hover {
+      background-color: #1523e7;
+    }
+
+    @media (max-height: 700px) {
+      .profile-container {
+        max-height: 95vh;
+        overflow-y: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="profile-container">
+
+    <!-- Website Logo -->
+    <div class="logo-container">
+      <img src="/image/image 2/logo.png" alt="Logo">
+    </div>
+
+    <!-- Profile Header -->
+    <div class="profile-header">
+      <div class="profile-pic-wrapper">
+        <label for="profile-pic-upload">
+          <img id="profile-pic" src="https://i.pravatar.cc/300?img=12" alt="user">
+          <span class="upload-icon">+</span>
+        </label>
+        <input type="file" id="profile-pic-upload" accept="image/*">
+      </div>
+      <h2> Profile</h2>
+    </div>
+
+    <!-- Profile Form -->
+    <form class="profile-form">
+      <label for="User">User Name</label>
+      <input type="text" id="supplier-name" value="Enter your name" disabled>
+
+      <label for="company">Nick Name</label>
+      <input type="text" id="company" value="rahul" disabled>
+
+      <label for="gst">Account Number</label>
+      <input type="text" id="gst" value="27ABCDE1234F1Z5" disabled>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" value="rahul123@gmail.com" disabled>
+
+      <label for="location">Location</label>
+      <input type="text" id="location" value="Mumbai, India" disabled>
+
+      <label for="phone">Phone no.</label>
+      <input type="text" id="phone" value="+91-9876543210" disabled>
+
+      <label for="address">Address</label>
+      <textarea id="address" rows="2" disabled>Plot 23, MIDC Area, Mumbai - 400001</textarea>
+
+      <label for="info">Additional Info</label>
+      <textarea id="info" rows="2" disabled>Some Additional information</textarea>
+
+      <!-- Buttons -->
+      <div class="btn-group">
+        <button type="button" id="edit-btn" onclick="enableEdit()">Edit</button>
+        <button type="button" id="save-btn" onclick="saveChanges()" style="display:none;">Save</button>
+      </div>
+
+      <!-- ✅ Back Button -->
+      <button type="button" class="back-btn" onclick="goBack()">← Back </button>
+    </form>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    function enableEdit() {
+      ['supplier-name', 'company', 'gst', 'email', 'location', 'phone', 'address', 'info'].forEach(id => {
+        document.getElementById(id).disabled = false;
+      });
+      document.getElementById("edit-btn").style.display = "none";
+      document.getElementById("save-btn").style.display = "inline-block";
+    }
+
+    function saveChanges() {
+      ['supplier-name', 'company', 'gst', 'email', 'location', 'phone', 'address', 'info'].forEach(id => {
+        document.getElementById(id).disabled = true;
+      });
+      document.getElementById("edit-btn").style.display = "inline-block";
+      document.getElementById("save-btn").style.display = "none";
+      alert("Profile updated successfully!");
+    }
+
+    function goBack() {
+      window.location.href = "/dashboard.html"; // Replace with correct dashboard filename
+    }
+
+    // Change profile picture
+    document.getElementById("profile-pic-upload").addEventListener("change", function (e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          document.getElementById("profile-pic").src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+
+</body>
+</html>

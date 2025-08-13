@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PayOn - Train Tickets</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+/* copied CSS from dashboard */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+body{
+  background:url('/image/main.jpg') no-repeat center center fixed;
+  background-size:cover;
+  min-height:100vh;
+  color:#c9b1b1;
+  padding-bottom:120px;
+}
+body::before{
+  content:"";
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(125,123,123,0.9);
+  z-index:-1;
+}
+.navbar{
+  background:#0077b6;color:#fff;padding:10px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:999;
+}
+.navbar-logo{text-align:center;flex-grow:1;}
+.navbar-logo img{height:40px;}
+.navbar-icon{width:28px;height:28px;cursor:pointer;transition:transform .3s;}
+.navbar-icon:hover{transform:scale(1.15);}
+.page-section{background:#fff;margin:20px;padding:20px;border-radius:15px;box-shadow:0 6px 20px rgba(0,0,0,0.15);}
+.page-section h2{color:#0077b6;margin-bottom:10px;}
+input, select, button{
+  width:100%;padding:10px;margin-top:10px;
+  border-radius:8px;border:1px solid #ccc;font-size:14px;
+}
+button{background:#0077b6;color:#fff;border:none;cursor:pointer;}
+button:hover{background:#005f8d;}
+.results{margin-top:20px;}
+.results table{width:100%;border-collapse:collapse;}
+.results th, .results td{padding:10px;border-bottom:1px solid #ddd;text-align:left;color:#333;}
+.results th{background:#f2f2f2;}
+/* FOOTER */
+footer{background:#000;color:#ccc;padding:30px 20px;margin-top:30px;}
+footer h4{color:#fff;border-bottom:1px solid #444;margin-bottom:10px;}
+footer a{color:#aaa;text-decoration:none;}
+footer a:hover{color:#fff;text-decoration:underline;}
+.footer-grid{display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;}
+.footer-column{flex:1 1 200px;min-width:180px;}
+.footer-bottom{text-align:center;margin-top:20px;font-size:13px;}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <img src="https://cdn-icons-png.flaticon.com/512/271/271220.png" class="navbar-icon" title="Back" onclick="window.location.href='dashboard.html'" />
+  <div class="navbar-logo"><img src="/image/image 2/logo.png" alt="PayOn Logo"></div>
+  <div></div>
+</div>
+
+<!-- CONTENT -->
+<div class="page-section">
+  <h2>Train Ticket Booking</h2>
+  <p style="color:#333;">Book train tickets quickly and easily.</p>
+  
+  <form>
+    <label for="from">From Station:</label>
+    <input type="text" id="from" placeholder="Enter departure station" required>
+    
+    <label for="to">To Station:</label>
+    <input type="text" id="to" placeholder="Enter destination station" required>
+    
+    <label for="date">Date of Journey:</label>
+    <input type="date" id="date" required>
+    
+    <label for="class">Class:</label>
+    <select id="class" required>
+      <option value="">Select Class</option>
+      <option>AC First Class</option>
+      <option>AC 2 Tier</option>
+      <option>AC 3 Tier</option>
+      <option>Sleeper</option>
+      <option>General</option>
+    </select>
+    
+    <button type="submit">Search Trains</button>
+  </form>
+  
+  <div class="results">
+    <h3 style="color:#0077b6;margin-top:20px;">Available Trains</h3>
+    <table>
+      <tr>
+        <th>Train Name</th>
+        <th>Departure</th>
+        <th>Arrival</th>
+        <th>Fare</th>
+        <th>Book</th>
+      </tr>
+      <tr>
+        <td>Rajdhani Express</td>
+        <td>10:00 AM</td>
+        <td>6:00 PM</td>
+        <td>₹1500</td>
+        <td><button>Book Now</button></td>
+      </tr>
+      <tr>
+        <td>Shatabdi Express</td>
+        <td>12:00 PM</td>
+        <td>8:00 PM</td>
+        <td>₹1200</td>
+        <td><button>Book Now</button></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-column"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="#">Support</a></li><li><a href="#">Terms</a></li></ul></div>
+    <div class="footer-column"><h4>Recharge</h4><ul><li><a href="recharge.html">Mobile</a></li><li><a href="#">DTH</a></li><li><a href="#">Electricity</a></li></ul></div>
+    <div class="footer-column"><h4>Payments</h4><ul><li><a href="#">Credit Cards</a></li><li><a href="wallet.html">Wallet</a></li><li><a href="#">Bank Transfer</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">&copy; 2025 PayOn. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PayOn - Recharge & Payment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://unpkg.com/html5-qrcode@2.3.10/html5-qrcode.min.js"></script>
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+    body {
+      background:url('/image/main.jpg') no-repeat center center fixed;
+      background-size:cover;color:#fff;min-height:100vh;padding-bottom:220px;position:relative;
+    }
+    body::before {content:"";position:fixed;top:0;left:0;height:100%;width:100%;background:rgba(125,123,123,0.9);z-index:-1;}
+    header {background-color:#0077b6;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;color:white;position:sticky;top:0;z-index:1000;}
+    header img {height:40px;}
+    header a {text-decoration:none;color:white;font-size:24px;}
+    .section-title {font-size:20px;color:#fff;font-weight:bold;padding:0 20px;margin-top:25px;margin-bottom:10px;animation:fadeIn 1s ease-in-out;}
+    .service-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:15px;padding:0 20px;animation:slideUp 1s ease-in-out;}
+    .service-grid.other-options {margin-bottom:25px;}
+    .service-item {background:white;border-radius:15px;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,0.2);transition:all 0.4s;cursor:pointer;overflow:hidden;animation:popIn 0.6s ease;}
+    .service-item:hover {transform:translateY(-5px);box-shadow:0 6px 15px rgba(0,0,0,0.25);}
+    .service-item img {width:60px;height:60px;margin-top:15px;}
+    .service-item span {display:block;padding:10px 0 15px;font-size:14px;color:#333;}
+    .form-container {background:white;margin:20px;padding:20px;border-radius:15px;box-shadow:0 6px 20px rgba(0,0,0,0.15);color:#333;animation:fadeIn 1.2s ease;}
+    .form-group {margin-bottom:18px;}
+    label {display:block;margin-bottom:6px;font-weight:bold;color:#4e54c8;}
+    input,select {width:100%;padding:10px 12px;border:1px solid #ccc;border-radius:10px;outline:none;}
+    button {width:100%;background:#4e54c8;color:white;border:none;padding:12px;border-radius:10px;font-size:16px;cursor:pointer;transition:0.3s;}
+    button:hover {background:#3b41b5;}
+    .info-box {background:#ffffffd6;margin:0 20px 20px;padding:15px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);font-size:14px;color:#333;animation:fadeIn 1.5s ease;}
+    nav {position:fixed;bottom:0;left:0;width:100%;background:#121212;display:flex;justify-content:space-around;align-items:center;height:65px;border-top:1px solid #333;z-index:100;}
+    nav div {text-align:center;font-size:13px;color:#bbbbbb;transition:0.3s;}
+    nav div:hover {color:#ffffff;transform:scale(1.1);}
+    footer {background-color:#000;color:#ccc;padding:50px 20px;}
+    footer h4 {font-size:16px;color:#fff;margin-bottom:15px;border-bottom:1px solid #444;padding-bottom:5px;}
+    footer ul {list-style:none;padding-left:0;}
+    footer ul li {margin-bottom:10px;}
+    footer ul li a {color:#aaa;text-decoration:none;font-size:14px;}
+    footer ul li a:hover {color:#fff;text-decoration:underline;}
+    .footer-grid {display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;max-width:1200px;margin:auto;}
+    .footer-column {flex:1 1 200px;min-width:180px;}
+    .footer-bottom {text-align:center;margin-top:30px;font-size:13px;color:#888;}
+    @keyframes popIn {0%{transform:scale(0.5);opacity:0;}100%{transform:scale(1);opacity:1;}}
+    @keyframes slideUp {from{transform:translateY(40px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+    @keyframes fadeIn {from{opacity:0;}to{opacity:1;}}
+    .qr-modal {position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);display:flex;justify-content:center;align-items:center;z-index:10000;flex-direction:column;}
+    .qr-modal #reader {width:300px;height:300px;}
+    .qr-modal button {margin-top:20px;padding:10px 20px;background:crimson;color:white;border:none;border-radius:8px;font-size:16px;}
+    @media(max-width:600px){header a{font-size:18px;}.service-item img{width:40px;height:40px;}.service-item span{font-size:12px;}button{font-size:14px;}}
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="dashboard.html">🔙</a>
+  <img src="/image/image 2/logo.png" alt="Payon Logo" />
+  <a href="profile.html">👤</a>
+</header>
+
+<div class="section-title">Recharge & Bill Payment</div>
+<div class="service-grid">
+  <div class="service-item" onclick="window.location.href='mobile.html'">
+    <img src="/image/image 2/mobile.png" />
+    <span>Mobile</span>
+  </div>
+  <div class="service-item" onclick="window.location.href='electricity.html'">
+    <img src="/image/image 2/electricity.png" />
+    <span>Electricity</span>
+  </div>
+  <div class="service-item" onclick="window.location.href='dth.html'">
+    <img src="/image/image 2/DTH.png" />
+    <span>DTH</span>
+  </div>
+  <div class="service-item" onclick="window.location.href='gas.html'">
+    <img src="/image/image 2/gas.png" />
+    <span>Gas</span>
+  </div>
+</div>
+
+<div class="section-title">Enter Details</div>
+<div class="form-container">
+  <form>
+    <div class="form-group">
+      <label for="number">Mobile / Consumer Number</label>
+      <input type="text" id="number" placeholder="Enter your number" required />
+    </div>
+    <div class="form-group">
+      <label for="operator">Select Operator</label>
+      <select id="operator" required>
+        <option value="">-- Choose Operator --</option>
+        <option value="airtel">Airtel</option>
+        <option value="jio">Jio</option>
+        <option value="vi">VI</option>
+        <option value="bsnl">BSNL</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="amount">Amount</label>
+      <input type="number" id="amount" placeholder="₹ Amount" required />
+    </div>
+    <button type="submit">Proceed to Pay</button>
+  </form>
+</div>
+
+<div class="section-title">Other Payment Options</div>
+<div class="service-grid other-options">
+  <div class="service-item" onclick="openQRScanner()">
+    <img src="https://cdn-icons-png.flaticon.com/512/2910/2910759.png" />
+    <span>QR Pay</span>
+  </div>
+  <div class="service-item" onclick="window.location.href='upi.html'">
+    <img src="https://cdn-icons-png.flaticon.com/512/831/831276.png" />
+    <span>UPI</span>
+  </div>
+  <div class="service-item" onclick="window.location.href='credit.html'">
+    <img src="https://cdn-icons-png.flaticon.com/512/633/633611.png" />
+    <span>Credit Card</span>
+  </div>
+  <div class="service-item" onclick="window.location.href='wallet.html'">
+    <img src="https://cdn-icons-png.flaticon.com/512/4072/4072261.png" />
+    <span>Wallet</span>
+  </div>
+</div>
+
+<div class="info-box">
+  <strong>💰 Wallet Balance:</strong> ₹1,250<br><br>
+  <strong>🔒 Secure Payments:</strong> All transactions are encrypted and 100% secure.<br><br>
+  <strong>🛠 Need Help?</strong> Call our 24x7 support at <a href="tel:+1800123456">1800-123-456</a>
+</div>
+
+<nav>
+  <div onclick="window.location.href='index.html'">🏠<br>Home</div>
+  <div onclick="window.location.href='passbook.html'">📒<br>Passbook</div>
+  <div onclick="openQRScanner()">📷<br>Pay</div>
+  <div onclick="window.location.href='dashboard.html'">🎁<br>Dashboard</div>
+  <div onclick="window.location.href='profile.html'">👤<br>Profile</div>
+</nav>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-column">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Support</a></li>
+        <li><a href="#">Terms</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Recharge</h4>
+      <ul>
+        <li><a href="#">Mobile</a></li>
+        <li><a href="#">DTH</a></li>
+        <li><a href="#">Electricity</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Payments</h4>
+      <ul>
+        <li><a href="#">Credit Cards</a></li>
+        <li><a href="#">Wallet</a></li>
+        <li><a href="#">Bank Transfer</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2025 PayOn. All rights reserved.</div>
+</footer>
+
+<div id="qr-modal" class="qr-modal" style="display:none;">
+  <div id="reader"></div>
+  <button onclick="closeQRScanner()">Close Scanner</button>
+</div>
+
+<script>
+  let qrScanner;
+  function openQRScanner() {
+    document.getElementById("qr-modal").style.display = "flex";
+    qrScanner = new Html5Qrcode("reader");
+    qrScanner.start(
+      { facingMode: "environment" },
+      { fps: 10, qrbox: 250 },
+      (decodedText) => {
+        alert("QR Code Scanned: " + decodedText);
+        closeQRScanner();
+      }
+    ).catch(err => console.error(err));
+  }
+  function closeQRScanner() {
+    qrScanner.stop().then(() => {
+      document.getElementById("qr-modal").style.display = "none";
+    }).catch(err => console.error(err));
+  }
+</script>
+
+</body>
+</html>
